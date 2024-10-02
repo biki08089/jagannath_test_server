@@ -175,7 +175,7 @@ const sendMail = async (doc) => {
   });
 
   const page = await browser.newPage();
-  await page.goto("https://developer.chrome.com/");
+  
   await page.setContent(htmlContent);
   await page.pdf({ path: "tour-details.pdf", format: "A4" });
 
