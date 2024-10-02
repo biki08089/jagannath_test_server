@@ -186,6 +186,7 @@ const sendMail = async (doc) => {
     // console.log(__dirname + "../docs/UDEMY.pdf");
     const transporter = nodemailer.createTransport({
       host: "smtp.gmail.com",
+      port: 587,
       auth: {
         user: "futureai941@gmail.com",
         pass: "alkzmoispjhwdqrg",
