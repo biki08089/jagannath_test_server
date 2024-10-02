@@ -55,7 +55,6 @@ const sendMail = async (doc) => {
     pdfDoc.text(`Day ${index + 1}: ${item.place}`).moveDown();
   });
 
-<<<<<<< HEAD
   // Closing the PDF document
   pdfDoc.end();
 
@@ -64,12 +63,6 @@ const sendMail = async (doc) => {
     pdfDoc.on("finish", resolve);
     pdfDoc.on("error", reject);
   });
-=======
-  const page = await browser.newPage();
-  
-  await page.setContent(htmlContent);
-  await page.pdf({ path: "tour-details.pdf", format: "A4" });
->>>>>>> 00e5e02c7da673f544228dedb56d31b052b2e3a2
 
   console.log("PDF generated successfully!");
 
