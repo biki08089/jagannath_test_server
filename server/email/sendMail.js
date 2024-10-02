@@ -1,11 +1,6 @@
-// const mongoose = require("mongoose");
 const nodemailer = require("nodemailer");
 const puppeteer = require("puppeteer");
 require("dotenv").config();
-// const fs = require("fs");
-// const path = require("path");
-// const revisedQuotation = require("./revisedQuotation");
-// const { type } = require("os");
 
 const sendMail = async (doc) => {
   const htmlContent = `
@@ -174,7 +169,13 @@ const sendMail = async (doc) => {
 
     `;
 
-  const browser = await puppeteer.launch();
+  const browser = await puppeteer.launch({
+    headless: true,
+    args: ["--no-sandbox", "--disable-setuid-sandbox"],
+    executablePath:
+      process.env.CHROME_BINARY || "/usr/bin/google-chrome-stable",
+  });
+
   const page = await browser.newPage();
   await page.setContent(htmlContent);
   await page.pdf({ path: "tour-details.pdf", format: "A4" });
