@@ -8,8 +8,7 @@
     "dev": "nodemon app.js",
     "build": "npm install",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint .",
-    "postinstall": "npx puppeteer install"
+    "lint": "eslint ."
   },
   "keywords": [
     "conference",
