@@ -1,0 +1,45 @@
+{
+  "name": "jagannath-tt-server",
+  "version": "1.0.0",
+  "description": "A server for managing conference events with user authentication and payment processing.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "build": "npm install",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint ."
+  },
+  "keywords": [
+    "conference",
+    "server",
+    "express",
+    "authentication",
+    "payment"
+  ],
+  "author": "Your Name",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.6.7",
+    "bcrypt": "^5.1.1",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "crypto-js": "^4.2.0",
+    "dotenv": "^16.4.5",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.1.1",
+    "nodemailer": "^6.9.14",
+    "pdfkit": "^0.15.0",
+    "puppeteer": "^23.0.2",
+    "razorpay": "^2.9.2"
+  },
+  "devDependencies": {
+    "eslint": "^8.50.0",
+    "nodemon": "^3.1.4"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
