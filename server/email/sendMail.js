@@ -172,11 +172,10 @@ const sendMail = async (doc) => {
   const browser = await puppeteer.launch({
     headless: true,
     args: ["--no-sandbox", "--disable-setuid-sandbox"],
-    executablePath:
-      process.env.CHROME_BINARY || "/usr/bin/google-chrome-stable",
   });
 
   const page = await browser.newPage();
+  await page.goto("https://developer.chrome.com/");
   await page.setContent(htmlContent);
   await page.pdf({ path: "tour-details.pdf", format: "A4" });
 
