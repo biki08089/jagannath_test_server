@@ -174,13 +174,13 @@ const sendMail = async (doc) => {
 
     `;
 
-  //   const browser = await puppeteer.launch();
-  //   const page = await browser.newPage();
-  //   await page.setContent(htmlContent);
-  //   await page.pdf({ path: "tour-details.pdf", format: "A4" });
+  const browser = await puppeteer.launch();
+  const page = await browser.newPage();
+  await page.setContent(htmlContent);
+  await page.pdf({ path: "tour-details.pdf", format: "A4" });
 
-  //   await browser.close();
-  //   console.log("PDF generated successfully!");
+  await browser.close();
+  console.log("PDF generated successfully!");
 
   try {
     // console.log(__dirname + "../docs/UDEMY.pdf");
@@ -200,12 +200,12 @@ const sendMail = async (doc) => {
       subject: "Tours And Travels Details",
       text: "Welcome to Tour and Travels.find the file attached",
       html: htmlContent,
-      //   attachments: [
-      //     {
-      //       filename: "tour-details.pdf",
-      //       path: "./tour-details.pdf",
-      //     },
-      //   ],
+      attachments: [
+        {
+          filename: "tour-details.pdf",
+          path: "./tour-details.pdf",
+        },
+      ],
     });
     console.log("info------>", info);
 
