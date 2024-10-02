@@ -208,6 +208,8 @@ const sendMail = async (doc) => {
         },
       ],
     });
+        console.log(info);
+
     if (info) {
       console.log(info);
       return;
