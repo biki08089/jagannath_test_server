@@ -208,7 +208,10 @@ const sendMail = async (doc) => {
         },
       ],
     });
-
+    if (info) {
+      console.log(info);
+      return;
+    }
     return "Email Sent successfully.";
   } catch (error) {
     console.log(error);
