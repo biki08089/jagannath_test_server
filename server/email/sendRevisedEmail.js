@@ -76,7 +76,7 @@ const sendRevisedEmail = async (data) => {
         }
         .regards {
              max-width: 95%;
-            margin: 5rem auto;
+            margin: 3rem auto;
             background-color: #fff;
             padding: 20px;
             border-radius: 8px;
@@ -120,7 +120,7 @@ const sendRevisedEmail = async (data) => {
         <!-- Customer Details Section -->
         <div class="customer-details">
             <img 
-                src="https://res.cloudinary.com/dnw1ttr02/image/upload/v1727775815/Jagannath/hehgqf6i99wwnzznktww.jpg" 
+                src="https://res.cloudinary.com/dnw1ttr02/image/upload/v1727929618/Jagannath/ij9igl4xwztyubudgggt.png" 
                 alt="Confirmed" 
                 class="confirmImg"
             />
@@ -178,7 +178,7 @@ const sendRevisedEmail = async (data) => {
         </table>
 
         <!-- Price Details Section -->
-        <table>
+        <table class="regards">
             <tr>
                 <th colspan="2">Price Details</th>
             </tr>
@@ -213,7 +213,7 @@ const sendRevisedEmail = async (data) => {
 
         
     </div>
-    <div class="regards">
+    <div class="">
      <table>
             <tr>
                 <th colspan="2">Original Itinerary Details</th>
