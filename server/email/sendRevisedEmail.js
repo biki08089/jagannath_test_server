@@ -1,10 +1,15 @@
 // const mongoose = require("mongoose");
 const nodemailer = require("nodemailer");
-const puppeteer = require("puppeteer");
+const pdf = require("html-pdf");
+const fs = require("fs");
+const path = require("path");
+const { promisify } = require("util");
 require("dotenv").config();
 
+const writeFileAsync = promisify(fs.writeFile);
+const unlinkAsync = promisify(fs.unlink);
+
 const sendRevisedEmail = async (data) => {
-  //   console.log(data);
   const htmlContent = `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -232,15 +237,26 @@ const sendRevisedEmail = async (data) => {
 
 `;
 
-  const browser = await puppeteer.launch();
-  const page = await browser.newPage();
-  await page.setContent(htmlContent);
-  await page.pdf({ path: "tour-details.pdf", format: "A4" });
-
-  await browser.close();
-  console.log("PDF generated successfully!");
+  // PDF generation function
+  const generatePDF = (content) => {
+    return new Promise((resolve, reject) => {
+      pdf.create(content, { format: "A4" }).toBuffer((err, buffer) => {
+        if (err) reject(err);
+        else resolve(buffer);
+      });
+    });
+  };
 
   try {
+    // Generate PDF
+    const pdfBuffer = await generatePDF(htmlContent);
+    // Save PDF to file
+    const pdfPath = path.join(__dirname, "tour-details.pdf");
+    console.log("i am dir--->", pdfPath);
+
+    await writeFileAsync(pdfPath, pdfBuffer);
+    console.log("PDF generated successfully!");
+
     // console.log(__dirname + "../docs/UDEMY.pdf");
     const transporter = nodemailer.createTransport({
       host: "smtp.gmail.com",
@@ -261,10 +277,15 @@ const sendRevisedEmail = async (data) => {
       attachments: [
         {
           filename: "tour-details.pdf",
-          path: "./tour-details.pdf",
+          path: pdfPath,
         },
       ],
     });
+    console.log("Email sent successfully");
+
+    // Clean up: remove the temporary PDF file after email is sent
+    await unlinkAsync(pdfPath);
+    console.log("Temporary PDF file removed");
 
     return "Revised Email Sent successfully.";
   } catch (error) {
